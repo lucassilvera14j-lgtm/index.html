@@ -1,797 +1,158 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calendario Lunar</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
-    <link rel="stylesheet" href="app.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendario Lunar Cannabis</title>
+    <link rel="stylesheet" href="style.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght=300;400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-
-    <nav class="main-nav-bar">
-        <button id="nav-calendar" class="nav-button active"><i class="fas fa-calendar-alt"></i> Calendario</button>
-        <button id="nav-seed" class="nav-button"><i class="fas fa-seedling"></i> Semillas</button>
-        <button id="nav-race" class="nav-button"><i class="fas fa-leaf"></i> Razas</button>
-        <button id="nav-moon-advice" class="nav-button"><i class="fas fa-moon"></i> Lunas</button>
-    </nav>
-
-    <div class="view-container">
-
-        <div id="calendar-view">
-            <div class="calendar">
-                <div class="calendar-header">
-                    <span class="year-change" id="prev-year"><i class="fas fa-chevron-left"></i></span>
-                    <div class="month-year-picker">
-                        <div id="month-picker">Diciembre</div>
-                        <div class="year-picker"><span id="year">2025</span></div>
-                    </div>
-                    <span class="year-change" id="next-year"><i class="fas fa-chevron-right"></i></span>
-                    <div class="month-list"></div>
-                </div>
-    
-                <div class="calendar-body">
-                    <div class="calendar-week-day">
-                        <div>Dom</div>
-                        <div>Lun</div>
-                        <div>Mar</div>
-                        <div>Mié</div>
-                        <div>Jue</div>
-                        <div>Vie</div>
-                        <div>Sáb</div>
-                    </div>
-                    <div class="calendar-days">
-                        </div>
-                </div>
-                
-                <div class="calendar-footer">
-                    <div class="dark-mode-switch">
-                        Modo Oscuro
-                        <div class="dark-mode-toggle">
-                            <div class="dark-mode-toggle-ident"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="seed-view" class="hidden">
-            <div class="seed-content">
-                <h2>Época Ideal de Siembra</h2>
-                <p>Selecciona el mes y hemisferio para ver la mejor época de germinación y trasplante.</p>
-                
-                <div class="seed-controls">
-                    <label for="seed-month-select">Selecciona el mes:</label>
-                    <select id="seed-month-select">
-                        <option value="1">Enero</option>
-                        <option value="2">Febrero</option>
-                        <option value="3">Marzo</option>
-                        <option value="4">Abril</option>
-                        <option value="5">Mayo</option>
-                        <option value="6">Junio</option>
-                        <option value="7">Julio</option>
-                        <option value="8">Agosto</option>
-                        <option value="9">Septiembre</option>
-                        <option value="10">Octubre</option>
-                        <option value="11">Noviembre</option>
-                        <option value="12" selected>Diciembre</option>
-                    </select>
-                </div>
-
-                <div class="seed-advice-container" id="seed-advice-container">
-                    <div class="advice-card">
-                        <h3>Diciembre (H. Sur)</h3>
-                        <p><strong>Germinación y Trasplante:</strong> Máxima actividad. Siembra fotoperiódicas para aprovechar el sol. Ideal para podas de formación.</p>
-                    </div>
-                    <div class="advice-card">
-                        <h3>Diciembre (H. Norte)</h3>
-                        <p><strong>Germinación y Trasplante:</strong> Reposo invernal. Excelente mes para la planificación, mantenimiento de herramientas e indoor.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="race-view" class="hidden">
-            <div class="race-content">
-                <h2>Variedades de Semillas Recomendadas</h2>
-                <div class="race-intro">Información sobre cepas populares y recomendadas para el clima uruguayo (predominantemente Sativas en exterior).</div>
-
-                <div class="race-selector-container">
-                    <label for="race-type-select">Filtrar por Ciclo:</label>
-                    <select id="race-type-select">
-                        <option value="all">Todas</option>
-                        <option value="auto">Automática (Auto)</option>
-                        <option value="photo">Fotoperiódica (Photo)</option>
-                    </select>
-                </div>
-
-                <div id="race-list">
-                    
-                                        <div class="race-card auto">
-                        <div class="race-text">
-                            <h3>1. Moby Dick (Auto)</h3>
-                            <p><strong>Dominancia:</strong> Sativa (70/30)</p>
-                            <p><strong>Ciclo:</strong> Auto (65-80 días desde la siembra)</p>
-                            <p><strong>Recomendación UY:</strong> Excelente opción para el verano, produce mucho en poco tiempo y aprovecha el sol fuerte. Ideal para cultivos discretos de ciclo rápido.</p>
-                            <div class="tags">
-                                <span class="tag tag-produccion">Gran Producción</span>
-                                <span class="tag tag-resistencia">Resistente</span>
-                                <span class="tag tag-rapida">Ciclo Rápido</span>
-                            </div>
-                        </div>
-                        <img src="Pictures/moby_dick.jpg" alt="Moby Dick Auto" class="race-img"> 
-                    </div>
-
-                    <div class="race-card photo">
-                        <div class="race-text">
-                            <h3>2. Skunk #1 (Photo)</h3>
-                            <p><strong>Dominancia:</strong> Híbrida (50/50)</p>
-                            <p><strong>Ciclo:</strong> Photo (Cosecha: Mar/Abril en H. Sur)</p>
-                            <p><strong>Recomendación UY:</strong> Clásico. Muy robusta, perdona errores y se adapta bien a las variaciones de clima. Necesita un ciclo de luz 12/12 para empezar a florecer.</p>
-                            <div class="tags">
-                                <span class="tag tag-vigorosa">Vigorosa</span>
-                                <span class="tag tag-adaptable">Adaptable</span>
-                                <span class="tag tag-facil">Fácil Cultivo</span>
-                            </div>
-                        </div>
-                        <img src="Pictures/skunk_1.jpg" alt="Skunk #1" class="race-img">
-                    </div>
-
-                    <div class="race-card auto">
-                        <div class="race-text">
-                            <h3>3. Northern Lights (Auto)</h3>
-                            <p><strong>Dominancia:</strong> Índica (90%)</p>
-                            <p><strong>Ciclo:</strong> Auto (60-70 días)</p>
-                            <p><strong>Recomendación UY:</strong> Perfecta para el que busca un efecto más relajante. Rápida y baja, ideal para balcones o interiores por su bajo olor y facilidad de cultivo.</p>
-                            <div class="tags">
-                                <span class="tag tag-facil">Fácil Cultivo</span>
-                                <span class="tag tag-interior">Ideal Interior</span>
-                                <span class="tag tag-rapida">Ciclo Rápido</span>
-                            </div>
-                        </div>
-                        <img src="Pictures/northern_lights.jpg" alt="Northern Lights Auto" class="race-img">
-                    </div>
-                    
-                    <div class="race-card photo">
-                        <div class="race-text">
-                            <h3>4. Gorilla Glue (Photo)</h3>
-                            <p><strong>Dominancia:</strong> Híbrida (60% Índica)</p>
-                            <p><strong>Ciclo:</strong> Photo (Cosecha: Marzo en H. Sur)</p>
-                            <p><strong>Recomendación UY:</strong> Conocida por su extrema producción de resina (pegajosa). Requiere más nutrientes, pero es una de las más potentes y buscadas en el mercado uruguayo.</p>
-                            <div class="tags">
-                                <span class="tag tag-produccion">Gran Producción</span>
-                                <span class="tag tag-potente">Alto THC</span>
-                                <span class="tag tag-resinosa">Muy Resinosa</span>
-                            </div>
-                        </div>
-                        <img src="Pictures/gorilla_glue.jpg" alt="Gorilla Glue" class="race-img"> 
-                    </div>
-
-                    <div class="race-card photo">
-                        <div class="race-text">
-                            <h3>5. Durban Poison (Photo)</h3>
-                            <p><strong>Dominancia:</strong> Sativa Pura</p>
-                            <p><strong>Ciclo:</strong> Photo (Cosecha: Abril/Mayo en H. Sur)</p>
-                            <p><strong>Recomendación UY:</strong> Pura Sativa, ideal para exterior en Uruguay. Crece alta y delgada. Resiste muy bien la humedad de la floración tardía. Efecto eufórico y cerebral.</p>
-                            <div class="tags">
-                                <span class="tag tag-sativa">Sativa Pura</span>
-                                <span class="tag tag-adaptable">Gran Altura</span>
-                                <span class="tag tag-resistencia">Resistente a Moho</span>
-                            </div>
-                        </div>
-                        <img src="Pictures/durban_poison.jpg" alt="Durban Poison" class="race-img">
-                    </div>
-                    
-                    <div class="race-card auto">
-                        <div class="race-text">
-                            <h3>6. Amnesia Haze (Auto)</h3>
-                            <p><strong>Dominancia:</strong> Sativa</p>
-                            <p><strong>Ciclo:</strong> Auto (80-90 días)</p>
-                            <p><strong>Recomendación UY:</strong> Una de las automáticas más grandes y productivas. Su ciclo es más largo que otras autos, pero su efecto es muy Sativa y cerebral. Requiere macetas grandes.</p>
-                            <div class="tags">
-                                <span class="tag tag-rapida">Ciclo Rápido</span>
-                                <span class="tag tag-sativa">Efecto Sativa</span>
-                                <span class="tag tag-produccion">Gran Producción Auto</span>
-                            </div>
-                        </div>
-                        <img src="Pictures/amnesia_haze.jpg" alt="Amnesia Haze Auto" class="race-img"> 
-                    </div>
-
-                                        <div class="race-card photo">
-                        <div class="race-text">
-                            <h3>7. Critical+ 2.0 (Photo)</h3>
-                            <p><strong>Dominancia:</strong> Índica</p>
-                            <p><strong>Ciclo:</strong> Photo (Cosecha: Septiembre en H. Sur)</p>
-                            <p><strong>Recomendación UY:</strong> Súper productora, de floración corta. Es conocida por su resistencia al moho, lo cual es excelente para la floración tardía en Uruguay.</p>
-                            <div class="tags">
-                                <span class="tag tag-produccion">Súper Producción</span>
-                                <span class="tag tag-resistencia">Anti-Moho</span>
-                            </div>
-                        </div>
-                        <img src="Pictures/critical_2.jpg" alt="Critical+ 2.0" class="race-img"> 
-                    </div>
-
-                    <div class="race-card auto">
-                        <div class="race-text">
-                            <h3>8. Wedding Cake (Auto)</h3>
-                            <p><strong>Dominancia:</strong> Índica (65%)</p>
-                            <p><strong>Ciclo:</strong> Auto (70-75 días)</p>
-                            <p><strong>Recomendación UY:</strong> Potencia alta y sabor dulce. Crecimiento compacto, buena para cultivos de balcón. Produce cogollos densos y cargados de resina.</p>
-                            <div class="tags">
-                                <span class="tag tag-potente">Alto THC</span>
-                                <span class="tag tag-dulce">Sabor Dulce</span>
-                            </div>
-                        </div>
-                        <img src="Pictures/wedding_cake.jpg" alt="Wedding Cake Auto" class="race-img"> 
-                    </div>
-
-                    <div class="race-card photo">
-                        <div class="race-text">
-                            <h3>9. OG Kush (Photo)</h3>
-                            <p><strong>Dominancia:</strong> Híbrida (75% Índica)</p>
-                            <p><strong>Ciclo:</strong> Photo (Cosecha: Marzo en H. Sur)</p>
-                            <p><strong>Recomendación UY:</strong> Famosa por su sabor a pino y notas terrosas. Es exigente con el clima y los nutrientes, pero si se cuida, da una cosecha de altísima calidad y potencia.</p>
-                            <div class="tags">
-                                <span class="tag tag-potente">Alto THC</span>
-                                <span class="tag tag-sabor">Sabor Intenso</span>
-                            </div>
-                        </div>
-                        <img src="Pictures/og_kush.jpg" alt="OG Kush" class="race-img"> 
-                    </div>
-
-                    <div class="race-card auto">
-                        <div class="race-text">
-                            <h3>10. Auto Tangie</h3>
-                            <p><strong>Dominancia:</strong> Sativa</p>
-                            <p><strong>Ciclo:</strong> Auto (70 días)</p>
-                            <p><strong>Recomendación UY:</strong> Para amantes de los cítricos. Aroma y sabor intensos a mandarina/naranja. Crece rápido y tiene un efecto muy energético y cerebral, ideal para el día.</p>
-                            <div class="tags">
-                                <span class="tag tag-sabor">Sabor Cítrico</span>
-                                <span class="tag tag-sativa">Efecto Sativa</span>
-                            </div>
-                        </div>
-                        <img src="Pictures/auto_tangie.jpg" alt="Auto Tangie" class="race-img"> 
-                    </div>
-
-                    <div class="race-card photo">
-                        <div class="race-text">
-                            <h3>11. Hawaiian Snow (Photo)</h3>
-                            <p><strong>Dominancia:</strong> Sativa (80%)</p>
-                            <p><strong>Ciclo:</strong> Photo (Cosecha: Mayo en H. Sur)</p>
-                            <p><strong>Recomendación UY:</strong> Sativa clásica de floración larga. Requiere paciencia, pero produce cosechas gigantes. Perfecta para exterior en grandes macetas o suelo.</p>
-                            <div class="tags">
-                                <span class="tag tag-sativa">Sativa Pura</span>
-                                <span class="tag tag-produccion">Cosecha XXL</span>
-                            </div>
-                        </div>
-                        <img src="Pictures/hawaiian_snow.jpg" alt="Hawaiian Snow" class="race-img"> 
-                    </div>
-
-                    <div class="race-card photo">
-                        <div class="race-text">
-                            <h3>12. Bruce Banner (Photo)</h3>
-                            <p><strong>Dominancia:</strong> Híbrida (60% Sativa)</p>
-                            <p><strong>Ciclo:</strong> Photo (Cosecha: Marzo en H. Sur)</p>
-                            <p><strong>Recomendación UY:</strong> Extremadamente potente (uno de los más altos en THC). Recomendada para cultivadores con experiencia. Su estructura es perfecta para podas de alto rendimiento.</p>
-                            <div class="tags">
-                                <span class="tag tag-potente">Potencia Extrema</span>
-                                <span class="tag tag-produccion">Gran Producción</span>
-                            </div>
-                        </div>
-                        <img src="Pictures/bruce_banner.jpg" alt="Bruce Banner" class="race-img"> 
-                    </div>
-
-                    <div class="race-card auto">
-                        <div class="race-text">
-                            <h3>13. Green Gelato (Auto)</h3>
-                            <p><strong>Dominancia:</strong> Híbrida (55% Índica)</p>
-                            <p><strong>Ciclo:</strong> Auto (70 días)</p>
-                            <p><strong>Recomendación UY:</strong> Una de las autos más rápidas y potentes. Cogollos muy compactos y resinosos. Ideal para ciclos de siembra de verano rápidos.</p>
-                            <div class="tags">
-                                <span class="tag tag-rapida">Ciclo Rápido</span>
-                                <span class="tag tag-resinosa">Muy Resinosa</span>
-                            </div>
-                    </div>
-                        <img src="Pictures/green_gelato.jpg" alt="Green Gelato Auto" class="race-img"> 
-                    </div>
-
-                    <div class="race-card photo">
-                        <div class="race-text">
-                            <h3>14. Chocolate Haze (Photo)</h3>
-                            <p><strong>Dominancia:</strong> Sativa (80%)</p>
-                            <p><strong>Ciclo:</strong> Photo (Cosecha: Abril en H. Sur)</p>
-                            <p><strong>Recomendación UY:</strong> Sabor y aroma a chocolate, dulce y terroso. Crece muy grande en exterior, por lo que es ideal para aprovechar los veranos largos.</p>
-                            <div class="tags">
-                                <span class="tag tag-sabor">Sabor Chocolate</span>
-                                <span class="tag tag-sativa">Efecto Sativa</span>
-                            </div>
-                        </div>
-                        <img src="Pictures/chocolate_haze.jpg" alt="Chocolate Haze" class="race-img"> 
-                    </div>
-
-                    <div class="race-card photo">
-                        <div class="race-text">
-                            <h3>15. Cream Mandarine (Photo)</h3>
-                            <p><strong>Dominancia:</strong> Índica (75%)</p>
-                            <p><strong>Ciclo:</strong> Photo (Cosecha: Marzo en H. Sur)</p>
-                            <p><strong>Recomendación UY:</strong> Una genética muy popular por su sabor dulce a mandarina y su floración rápida. Ideal para terminar la cosecha antes de las lluvias fuertes de otoño.</p>
-                            <div class="tags">
-                                <span class="tag tag-dulce">Sabor Dulce</span>
-                                <span class="tag tag-rapida">Floración Rápida</span>
-                            </div>
-                        </div>
-                        <img src="Pictures/cream_mandarine.jpg" alt="Cream Mandarine" class="race-img"> 
-                    </div>
-
-                    <div class="race-card auto">
-                        <div class="race-text">
-                            <h3>16. Auto Chem Dawg</h3>
-                            <p><strong>Dominancia:</strong> Híbrida (60% Índica)</p>
-                            <p><strong>Ciclo:</strong> Auto (80 días)</p>
-                            <p><strong>Recomendación UY:</strong> Una cepa muy potente y aromática (diesel, química). Crece alta para ser auto y da rendimientos generosos con un efecto relajante de larga duración.</p>
-                            <div class="tags">
-                                <span class="tag tag-potente">Alto THC</span>
-                                <span class="tag tag-sabor">Aroma Diesel</span>
-                            </div>
-                        </div>
-                        <img src="Pictures/auto_chem_dawg.jpg" alt="Auto Chem Dawg" class="race-img"> 
-                    </div>
-
-                    <div class="race-card photo">
-                        <div class="race-text">
-                            <h3>17. White Widow (Photo)</h3>
-                            <p><strong>Dominancia:</strong> Híbrida (60% Índica)</p>
-                            <p><strong>Ciclo:</strong> Photo (Cosecha: Marzo en H. Sur)</p>
-                            <p><strong>Recomendación UY:</strong> Clásico holandés. Es muy resistente y robusta. Produce una gruesa capa de resina (parece blanca), ideal para extracciones.</p>
-                            <div class="tags">
-                                <span class="tag tag-resinosa">Muy Resinosa</span>
-                                <span class="tag tag-adaptable">Adaptable</span>
-                            </div>
-                        </div>
-                        <img src="Pictures/white_widow.jpg" alt="White Widow" class="race-img"> 
-                    </div>
-
-                    <div class="race-card auto">
-                        <div class="race-text">
-                            <h3>18. Blackberry Kush (Auto)</h3>
-                            <p><strong>Dominancia:</strong> Índica (80%)</p>
-                            <p><strong>Ciclo:</strong> Auto (70 días)</p>
-                            <p><strong>Recomendación UY:</strong> Conocida por sus tonos púrpuras y sabor a bayas. Muy relajante y de tamaño manejable. Ideal para cultivo de guerrilla o balcones discretos.</p>
-                            <div class="tags">
-                                <span class="tag tag-dulce">Sabor Frutal</span>
-                                <span class="tag tag-rapida">Ciclo Rápido</span>
-                            </div>
-                        </div>
-                        <img src="Pictures/blackberry_kush.jpg" alt="Blackberry Kush Auto" class="race-img"> 
-                    </div>
-
-                    <div class="race-card photo">
-                        <div class="race-text">
-                            <h3>19. Super Lemon Haze (Photo)</h3>
-                            <p><strong>Dominancia:</strong> Sativa (80%)</p>
-                            <p><strong>Ciclo:</strong> Photo (Cosecha: Mayo en H. Sur)</p>
-                            <p><strong>Recomendación UY:</strong> Sativa de gran altura. Produce cosechas masivas con sabor a limón incensado. Necesita mucho espacio y mucha luz para alcanzar su potencial.</p>
-                            <div class="tags">
-                                <span class="tag tag-sativa">Sativa Pura</span>
-                                <span class="tag tag-produccion">Cosecha XXL</span>
-                            </div>
-                        </div>
-                        <img src="Pictures/super_lemon_haze.jpg" alt="Super Lemon Haze" class="race-img"> 
-                    </div>
-
-                    <div class="race-card auto">
-                        <div class="race-text">
-                            <h3>20. Auto Gelato</h3>
-                            <p><strong>Dominancia:</strong> Índica (55%)</p>
-                            <p><strong>Ciclo:</strong> Auto (75 días)</p>
-                            <p><strong>Recomendación UY:</strong> Equilibrio perfecto entre sabor dulce, potencia y crecimiento rápido. Famosa por sus cogollos morados bajo ciertas temperaturas.</p>
-                            <div class="tags">
-                                <span class="tag tag-dulce">Sabor Dulce</span>
-                                <span class="tag tag-potente">Alto THC</span>
-                            </div>
-                        </div>
-                        <img src="Pictures/auto_gelato.jpg" alt="Auto Gelato" class="race-img"> 
-                    </div>
-
-                    <div class="race-card photo">
-                        <div class="race-text">
-                            <h3>21. Jack Herer (Photo)</h3>
-                            <p><strong>Dominancia:</strong> Sativa (55%)</p>
-                            <p><strong>Ciclo:</strong> Photo (Cosecha: Abril en H. Sur)</p>
-                            <p><strong>Recomendación UY:</strong> Híbrido con efecto cerebral. Buena resistencia a plagas y enfermedades. Ideal para cultivadores intermedios que buscan un efecto de "subidón" claro.</p>
-                            <div class="tags">
-                                <span class="tag tag-sativa">Efecto Sativa</span>
-                                <span class="tag tag-resistencia">Resistente</span>
-                            </div>
-                        </div>
-                        <img src="Pictures/jack_herer.jpg" alt="Jack Herer" class="race-img"> 
-                    </div>
-
-                    <div class="race-card auto">
-                        <div class="race-text">
-                            <h3>22. Auto Blue Dream</h3>
-                            <p><strong>Dominancia:</strong> Híbrida (60% Sativa)</p>
-                            <p><strong>Ciclo:</strong> Auto (75-80 días)</p>
-                            <p><strong>Recomendación UY:</strong> Sabor a frutos del bosque. Crece alta para ser auto y da una producción media-alta. Un efecto de bienestar y relajación moderado.</p>
-                            <div class="tags">
-                                <span class="tag tag-dulce">Sabor Frutal</span>
-                                <span class="tag tag-produccion">Media/Alta</span>
-                            </div>
-                        </div>
-                        <img src="Pictures/auto_blue_dream.jpg" alt="Auto Blue Dream" class="race-img"> 
-                    </div>
-
-                    <div class="race-card photo">
-                        <div class="race-text">
-                            <h3>23. Purple Haze (Photo)</h3>
-                            <p><strong>Dominancia:</strong> Sativa (80%)</p>
-                            <p><strong>Ciclo:</strong> Photo (Cosecha: Marzo en H. Sur)</p>
-                            <p><strong>Recomendación UY:</strong> Clásico por su coloración púrpura. Tiene un buen aguante a los cambios de temperatura y produce un efecto eufórico y psicodélico.</p>
-                            <div class="tags">
-                                <span class="tag tag-sativa">Efecto Sativa</span>
-                                <span class="tag tag-color">Color Púrpura</span>
-                            </div>
-                        </div>
-                        <img src="Pictures/purple_haze.jpg" alt="Purple Haze" class="race-img"> 
-                    </div>
-
-                    <div class="race-card auto">
-                        <div class="race-text">
-                            <h3>24. Auto Critical Kush</h3>
-                            <p><strong>Dominancia:</strong> Índica</p>
-                            <p><strong>Ciclo:</strong> Auto (60 días)</p>
-                            <p><strong>Recomendación UY:</strong> Extremadamente rápida. Perfecta para el cultivador impaciente. Producción alta en un ciclo muy corto, pero necesita sol intenso y constante.</p>
-                            <div class="tags">
-                                <span class="tag tag-rapida">Muy Rápida (60 días)</span>
-                                <span class="tag tag-produccion">Gran Producción Auto</span>
-                            </div>
-                        </div>
-                        <img src="Pictures/auto_critical_kush.jpg" alt="Auto Critical Kush" class="race-img"> 
-                    </div>
-
-                    <div class="race-card photo">
-                        <div class="race-text">
-                            <h3>25. Mexican Sativa (Photo)</h3>
-                            <p><strong>Dominancia:</strong> Sativa (70%)</p>
-                            <p><strong>Ciclo:</strong> Photo (Cosecha: Marzo/Abril en H. Sur)</p>
-                            <p><strong>Recomendación UY:</strong> Sativa muy resistente al frío y a la humedad. Perfecta para exterior en Uruguay por su robustez y facilidad de cultivo en climas variables.</p>
-                            <div class="tags">
-                                <span class="tag tag-sativa">Efecto Sativa</span>
-                                <span class="tag tag-resistencia">Muy Resistente</span>
-                            </div>
-                        </div>
-                        <img src="Pictures/mexican_sativa.jpg" alt="Mexican Sativa" class="race-img"> 
-                    </div>
-
-                    <div class="race-card auto">
-                        <div class="race-text">
-                            <h3>26. Auto Girl Scout Cookies</h3>
-                            <p><strong>Dominancia:</strong> Híbrida (60% Índica)</p>
-                            <p><strong>Ciclo:</strong> Auto (70 días)</p>
-                            <p><strong>Recomendación UY:</strong> Sabor a menta y chocolate. Muy potente. Ideal para el cultivador de indoor o exterior discreto que busca calidad premium en poco tiempo.</p>
-                            <div class="tags">
-                                <span class="tag tag-potente">Alto THC</span>
-                                <span class="tag tag-sabor">Sabor Dulce</span>
-                            </div>
-                        </div>
-                        <img src="Pictures/auto_girl_scout_cookies.jpg" alt="Auto Girl Scout Cookies" class="race-img"> 
-                    </div>
-
-                    <div class="race-card photo">
-                        <div class="race-text">
-                            <h3>27. Strawberry Cough (Photo)</h3>
-                            <p><strong>Dominancia:</strong> Sativa (80%)</p>
-                            <p><strong>Ciclo:</strong> Photo (Cosecha: Abril en H. Sur)</p>
-                            <p><strong>Recomendación UY:</strong> Sabor inconfundible a fresas. Es una Sativa más compacta que otras, lo que la hace buena para balcones y terrazas. Efecto claro y estimulante.</p>
-                            <div class="tags">
-                                <span class="tag tag-sabor">Sabor Frutal</span>
-                                <span class="tag tag-sativa">Efecto Sativa</span>
-                            </div>
-                        </div>
-                        <img src="Pictures/strawberry_cough.jpg" alt="Strawberry Cough" class="race-img"> 
-                    </div>
-
-                    <div class="race-card auto">
-                        <div class="race-text">
-                            <h3>28. Auto Zkittlez</h3>
-                            <p><strong>Dominancia:</strong> Índica (70%)</p>
-                            <p><strong>Ciclo:</strong> Auto (65 días)</p>
-                            <p><strong>Recomendación UY:</strong> Sabor dulce, a caramelo y frutas tropicales. Una auto muy rápida, ideal para asegurar una cosecha de gran sabor en pleno verano.</p>
-                            <div class="tags">
-                                <span class="tag tag-rapida">Ciclo Rápido</span>
-                                <span class="tag tag-dulce">Sabor Dulce</span>
-                            </div>
-                        </div>
-                        <img src="Pictures/auto_zkittlez.jpg" alt="Auto Zkittlez" class="race-img"> 
-                    </div>
-
-                    <div class="race-card photo">
-                        <div class="race-text">
-                            <h3>29. Acapulco Gold (Photo)</h3>
-                            <p><strong>Dominancia:</strong> Sativa (80%)</p>
-                            <p><strong>Ciclo:</strong> Photo (Cosecha: Abril/Mayo en H. Sur)</p>
-                            <p><strong>Recomendación UY:</strong> Landrace legendaria. Necesita un clima cálido y mucho sol. Es muy resistente y produce un cogollo dorado único con efecto muy energético y duradero.</p>
-                            <div class="tags">
-                                <span class="tag tag-sativa">Sativa Pura</span>
-                                <span class="tag tag-resistencia">Resistente</span>
-                            </div>
-                        </div>
-                        <img src="Pictures/acapulco_gold.jpg" alt="Acapulco Gold" class="race-img"> 
-                    </div>
-
-                    <div class="race-card photo">
-                        <div class="race-text">
-                            <h3>30. Pineapple Express (Photo)</h3>
-                            <p><strong>Dominancia:</strong> Híbrida (60% Sativa)</p>
-                            <p><strong>Ciclo:</strong> Photo (Cosecha: Marzo en H. Sur)</p>
-                            <p><strong>Recomendación UY:</strong> Sabor tropical a piña. Es una planta relativamente fácil de cultivar, muy robusta y con cosechas abundantes. Efecto alegre y motivador.</p>
-                            <div class="tags">
-                                <span class="tag tag-sabor">Sabor Tropical</span>
-                                <span class="tag tag-produccion">Gran Producción</span>
-                            </div>
-                        </div>
-                        <img src="Pictures/pineapple_express.jpg" alt="Pineapple Express" class="race-img"> 
-                    </div>
-                                    </div>
-            </div>
-        </div>
-
-        <div id="moon-advice-view" class="hidden">
-            <div class="moon-advice-content">
-                <h2>Consejos de Cultivo Lunar</h2>
-                <div id="moon-advice-grid">
-                    <div class="dynamic-advice-summary">
-                        <div class="moon-summary-box">
-                            <h3>Fase Lunar Actual</h3>
-                            <p class="current-phase" id="current-moon-phase">Busca el día de hoy en el calendario para ver la fase.</p>
-                            <p class="next-phase-detail" id="next-moon-info">La savia está descendiendo, enfócate en las raíces.</p>
-                        </div>
-                    </div>
-
-                    <div class="moon-advice-card">
-                        <h3><i class="fas fa-moon"></i> Luna Nueva</h3>
-                        <p class="savia-info"><strong>Savia:</strong> Mínima actividad, concentrada en las raíces. Fuerte reposo.</p>
-                        <h4>Tareas recomendadas:</h4>
-                        <ul>
-                            <li>Limpieza, mantenimiento y desmalezado.</li>
-                            <li>Preparación y aireación del sustrato.</li>
-                            <li>Aplicación de compost.</li>
-                        </ul>
-                        <h4>A evitar:</h4>
-                        <ul class="avoid-list">
-                            <li>Germinación o siembra directa (alta probabilidad de fracaso).</li>
-                            <li>Poda o trasplante severos.</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="moon-advice-card">
-                        <h3><i class="fas fa-adjust" style="color:#f7b731;"></i> Cuarto Creciente</h3>
-                        <p class="savia-info"><strong>Savia:</strong> En ascenso, moviéndose hacia el follaje. Crecimiento explosivo.</p>
-                        <h4>Tareas recomendadas:</h4>
-                        <ul>
-                            <li>**Germinación y siembra** (el mejor momento para crecimiento de hojas y tallos).</li>
-                            <li>Trasplante.</li>
-                            <li>Riego y fertilización foliar.</li>
-                        </ul>
-                        <h4>A evitar:</h4>
-                        <ul class="avoid-list">
-                            <li>Cosecha (alto contenido de agua en la planta).</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="moon-advice-card">
-                        <h3><i class="fas fa-circle" style="color:#ffd166;"></i> Luna Llena</h3>
-                        <p class="savia-info"><strong>Savia:</strong> Máxima concentración en la parte aérea (flores y hojas).</p>
-                        <h4>Tareas recomendadas:</h4>
-                        <ul>
-                            <li>Riego abundante.</li>
-                            <li>**Corte de esquejes** (se enraízan mejor en esta fase).</li>
-                            <li>Control de plagas superficiales (están más activas).</li>
-                        </ul>
-                        <h4>A evitar:</h4>
-                        <ul class="avoid-list">
-                            <li>Trasplante (la planta está muy cargada de energía aérea).</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="moon-advice-card">
-                        <h3><i class="fas fa-adjust fa-rotate-180" style="color:#785A48;"></i> Cuarto Menguante</h3>
-                        <p class="savia-info"><strong>Savia:</strong> Descenso, concentrándose en las raíces. Tiempo de floración.</p>
-                        <h4>Tareas recomendadas:</h4>
-                        <ul>
-                            <li>Poda y pinzado (ayuda a cicatrizar más rápido).</li>
-                            <li>Aplicación de nutrientes a las raíces.</li>
-                            <li>Preparación del terreno para la próxima siembra.</li>
-                        </ul>
-                        <h4>A evitar:</h4>
-                        <ul class="avoid-list">
-                            <li>Siembra de plantas de hoja (crecerán menos).</li>
-                        </ul>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <div id="modalBackdrop" class="hidden"></div> 
-
-    <div id="notePanel" class="hidden">
-        <h4>Recordatorio para [Fecha]</h4>
-        <textarea id="noteText" placeholder="Escribe tu recordatorio..."></textarea>
-        <div class="modal-actions">
-            <button id="saveNote" class="btn-save">Guardar</button>
-            <button id="closeNote" class="btn-close">Cerrar</button>
-        </div>
-    </div>
-
-    <script src="app.js"></script>
-
-    <script>
-    // ============================================
-    // FUNCIÓN PARA EL FILTRO DE RAZAS
-    // ============================================
-    function enableRaceFilter() {
-        const selector = document.getElementById('race-type-select');
-        const raceList = document.getElementById('race-list');
-
-        if (selector && raceList) {
-            selector.addEventListener('change', (e) => {
-                const filterValue = e.target.value;
-                const raceCards = raceList.querySelectorAll('.race-card');
-
-                raceCards.forEach(card => {
-                    if (filterValue === 'all') {
-                        card.style.display = 'flex';
-                    } 
-                    else if (card.classList.contains(filterValue)) {
-                        card.style.display = 'flex';
-                    } 
-                    else {
-                        card.style.display = 'none';
-                    }
-                });
-            });
-        }
-    }
-
-    // ============================================
-    // LÓGICA DEL PANEL DE RECORDATORIOS (MODAL)
-    // ============================================
-    function enableNotesPanel() {
-        // Asegúrate de que todos los elementos existen antes de continuar
-        const panel = document.getElementById('notePanel')
-        const backdrop = document.getElementById('modalBackdrop') 
-        const noteText = document.getElementById('noteText')
-        const saveBtn = document.getElementById('saveNote')
-        const closeBtn = document.getElementById('closeNote')
-        const panelTitle = panel ? panel.querySelector('h4') : null;
-        
-        if (!panel || !backdrop || !noteText || !saveBtn || !closeBtn || !panelTitle) {
-            console.error("Error: Los elementos del modal de notas no se encontraron en el HTML.");
-            // Devuelve una función vacía para evitar errores de llamada más tarde
-            return function() {};
-        }
-        
-        const STORAGE_KEY = 'calendar_notes_data';
-
-        function loadNotes() {
-            const storedData = localStorage.getItem(STORAGE_KEY);
-            return storedData ? JSON.parse(storedData) : {};
-        }
-
-        function saveNotes(notesData) {
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(notesData));
-        }
-        
-        let notes = loadNotes(); 
-
-        function getDayNumberFromElement(dayElement) {
-            // Esta función revisa los nodos de texto para obtener el número de día, ignorando los iconos
-            let dayNumber = null;
-            for (let node of dayElement.childNodes) {
-                if (node.nodeType === 3 && node.textContent.trim().length > 0) { 
-                    dayNumber = node.textContent.trim();
-                    break;
-                }
-            }
-            if (!dayNumber) {
-                // Intento de fallback si el número está pegado al ícono
-                dayNumber = dayElement.textContent.trim().slice(0, 2).replace(/\D/g, '');
-            }
-            return dayNumber;
-        }
-
-        function updateDayAppearance(calendarDays) {
-            // Variables globales definidas en app.js
-            if (typeof curr_month === 'undefined' || typeof curr_year === 'undefined' || typeof month_names === 'undefined') return;
-
-            const currentMonthIndex = curr_month.value;
-            const currentYear = curr_year.value;
-
-            calendarDays.forEach(dayElement => {
-                const dayNumber = getDayNumberFromElement(dayElement);
-                if (!dayNumber) return; 
-
-                const key = `${currentYear}-${currentMonthIndex + 1}-${dayNumber}`
-                
-                dayElement.classList.remove('has-note'); 
-
-                if (notes[key] && notes[key].trim() !== '') {
-                    dayElement.classList.add('has-note'); 
-                }
-            });
-        }
-
-        function attachDayClicks() {
-            // Variables globales definidas en app.js
-            if (typeof curr_month === 'undefined' || typeof curr_year === 'undefined' || typeof month_names === 'undefined') {
-                return;
-            }
-
-            const calendarDays = document.querySelectorAll('.calendar-days .calendar-day-hover')
-            
-            updateDayAppearance(calendarDays);
-
-            calendarDays.forEach(day => {
-                day.onclick = (e) => {
-                    if (!day.classList.contains('calendar-day-hover')) return;
-                    
-                    e.stopPropagation();
-
-                    const dayNumber = getDayNumberFromElement(day);
-                    if (!dayNumber) return;
-
-                    const monthName = month_names[curr_month.value];
-                    const year = curr_year.value
-                    const key = `${year}-${curr_month.value + 1}-${dayNumber}`
-                    
-                    panelTitle.textContent = `Recordatorio para ${dayNumber} de ${monthName}`; 
-                    panel.classList.remove('hidden'); 
-                    backdrop.classList.remove('hidden'); 
-                    
-                    noteText.value = notes[key] || ''
-
-                    saveBtn.onclick = () => {
-                        if (noteText.value.trim() === '') {
-                            delete notes[key];
-                        } else {
-                            notes[key] = noteText.value.trim()
-                        }
-                        
-                        saveNotes(notes); 
-                        
-                        panel.classList.add('hidden'); 
-                        backdrop.classList.add('hidden'); 
-
-                        // Vuelve a pintar los días para mostrar el marcador de nota
-                        updateDayAppearance(document.querySelectorAll('.calendar-days .calendar-day-hover'));
-                    }
-
-                    closeBtn.onclick = () => {
-                        panel.classList.add('hidden'); 
-                        backdrop.classList.add('hidden'); 
-                    }
-                }
-            })
-        }
-
-        return attachDayClicks
-    }
-
-
-    // ============================================
-    // INICIALIZACIÓN FINAL
-    // ============================================
-
-    document.addEventListener('DOMContentLoaded', () => {
-        // Hacemos que esta función sea globalmente accesible para que app.js la llame al cambiar de mes
-        window.reattachDayClicks = enableNotesPanel(); 
-        enableRaceFilter(); 
-    });
-    </script>
-
+    <div class="app-container">
+        
+        <nav class="sidebar">
+            <h2 class="sidebar-title">Menú</h2>
+            <ul>
+                <li class="menu-item" data-target="calendario">Calendario</li> 
+                <li class="menu-item active" data-target="razas">Razas</li>
+                <li class="menu-item" data-target="semillas">Semillas</li>
+                <li class="menu-item" data-target="lunas">Lunas</li>
+                <li class="menu-item" data-target="nutricion">Nutrición</li>
+            </ul>
+        </nav>
+        
+        <div class="main-content">
+            
+            <div id="calendario" class="content-section">
+                <div class="calendar-card">
+                    <header class="calendar-header">
+                        <button class="nav-button" id="prev-month">❮</button>
+                        <h1 id="month-year" class="month-title"></h1>
+                        <button class="nav-button" id="next-month">❯</button>
+                    </header>
+                    <div class="calendar-grid">
+                        <div class="weekdays-row">
+                            <span>D</span>
+                            <span>L</span>
+                            <span>M</span>
+                            <span>X</span>
+                            <span>J</span>
+                            <span>V</span>
+                            <span>S</span>
+                        </div>
+                        <div class="days-container" id="calendar-days">
+                            </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="razas" class="content-section active">
+                <h2 class="section-title">🌿 Razas Recomendadas (Ciclos y Dominancia)</h2>
+                <p>Lista ampliada de cepas populares con detalles sobre su ciclo de vida y dominancia:</p>
+                
+                <dl class="strain-list">
+                    <dt>
+                        Acapulco Gold
+                        <img src="https://via.placeholder.com/60/388E3C/FFFFFF?text=AG" alt="Acapulco Gold" class="strain-img">
+                    </dt>
+                    <dd><strong>Tipo:</strong> Sativa Pura. <strong>Ciclo:</strong> Fotoperiódica (**~6 meses**). <strong>Detalles:</strong> Famosa por su efecto energizante. Cosecha tardía (Abril).</dd>
+                    
+                    <dt>
+                        Amnesia Haze
+                        <img src="https://via.placeholder.com/60/388E3C/FFFFFF?text=AH" alt="Amnesia Haze" class="strain-img">
+                    </dt>
+                    <dd><strong>Tipo:</strong> Sativa dominante. <strong>Ciclo:</strong> Fotoperiódica (**~6 meses**). <strong>Detalles:</strong> Alto rendimiento y fuerte efecto cerebral. Requiere mucho sol y nutrición.</dd>
+                    
+                    <dt>
+                        Northern Lights
+                        <img src="https://via.placeholder.com/60/388E3C/FFFFFF?text=NL" alt="Northern Lights" class="strain-img">
+                    </dt>
+                    <dd><strong>Tipo:</strong> Índica Pura. <strong>Ciclo:</strong> Fotoperiódica (**~5 meses**). <strong>Detalles:</strong> Clásica índica relajante, robusta y de fácil cultivo. Cosecha temprana (Marzo).</dd>
+                    
+                    <dt>
+                        Moby Dick
+                        <img src="https://via.placeholder.com/60/388E3C/FFFFFF?text=MD" alt="Moby Dick" class="strain-img">
+                    </dt>
+                    <dd><strong>Tipo:</strong> Sativa dominante. <strong>Ciclo:</strong> Fotoperiódica (**~6 meses**). <strong>Detalles:</strong> Gran productora que necesita espacio y fertilización intensiva.</dd>
+
+                    <dt>
+                        Bruce Banner
+                        <img src="https://via.placeholder.com/60/388E3C/FFFFFF?text=BB" alt="Bruce Banner" class="strain-img">
+                    </dt>
+                    <dd><strong>Tipo:</strong> Híbrida (Sativa dominante). <strong>Ciclo:</strong> Fotoperiódica (**~5-6 meses**). <strong>Detalles:</strong> Conocida por su potencia extrema (alto THC). Cultivo de rendimiento medio-alto.</dd>
+                    
+                    <dt>
+                        Green Gelato
+                        <img src="https://via.placeholder.com/60/388E3C/FFFFFF?text=GG" alt="Green Gelato" class="strain-img">
+                    </dt>
+                    <dd><strong>Tipo:</strong> Híbrida (Índica/Sativa equilibrada). <strong>Ciclo:</strong> Fotoperiódica (**~5 meses**). <strong>Detalles:</strong> Sabores cítricos. Rápida floración y cogollos densos.</dd>
+
+                    <dt>
+                        Skunk #1
+                        <img src="https://via.placeholder.com/60/388E3C/FFFFFF?text=S1" alt="Skunk #1" class="strain-img">
+                    </dt>
+                    <dd><strong>Tipo:</strong> Híbrida (Clásica). <strong>Ciclo:</strong> Fotoperiódica (**~5 meses**). <strong>Detalles:</strong> Muy estable y productiva. Excelente resistencia general. Ideal para el clima uruguayo.</dd>
+
+                    <dt>
+                        White Widow
+                        <img src="https://via.placeholder.com/60/388E3C/FFFFFF?text=WW" alt="White Widow" class="strain-img">
+                    </dt>
+                    <dd><strong>Tipo:</strong> Híbrida (Índica dominante). <strong>Ciclo:</strong> Fotoperiódica (**~5 meses**). <strong>Detalles:</strong> Una leyenda. Produce cogollos cubiertos de resina. Ciclo rápido.</dd>
+
+                    <dt>
+                        Auto Blue Dream
+                        <img src="https://via.placeholder.com/60/388E3C/FFFFFF?text=BD" alt="Auto Blue Dream" class="strain-img">
+                    </dt>
+                    <dd><strong>Tipo:</strong> Autofloreciente. <strong>Ciclo:</strong> Automática (**~2.5 a 3 meses**). <strong>Detalles:</strong> Versión rápida de la Blue Dream. Buen equilibrio Índica/Sativa. Ideal para múltiples cosechas (Silta).</dd>
+                    
+                    <dt>
+                        Auto Critical Kush
+                        <img src="https://via.placeholder.com/60/388E3C/FFFFFF?text=CK" alt="Auto Critical Kush" class="strain-img">
+                    </dt>
+                    <dd><strong>Tipo:</strong> Autofloreciente (Índica dominante). <strong>Ciclo:</strong> Automática (**~2.5 a 3 meses**). <strong>Detalles:</strong> Ciclo muy rápido. Cogollos pesados y compactos.</dd>
+                </dl>
+            </div>
+
+            <div id="semillas" class="content-section">
+                <h2 class="section-title">🌱 Tipos de Semillas y Ciclos de Cultivo</h2>
+                <dl>
+                    <dt>Semillas **Fotoperiódicas** (Ciclo Largo)</dt>
+                    <dd>Dependen de las horas de luz (fotoperíodo). En exterior en Uruguay, siembras en primavera (Oct-Nov) y cosechas en otoño (Marzo-Abril). Ciclo de unos **5 a 6 meses**.</dd>
+                    
+                    <dt>Semillas **Autoflorecientes** (Automáticas / Tipo Silta)</dt>
+                    <dd>Florecen automáticamente sin depender del fotoperíodo. Ciclo total de **2 a 3 meses**. Permiten varias cosechas por temporada y son perfectas para principiantes.</dd>
+                </dl>
+            </div>
+
+            <div id="lunas" class="content-section">
+                <h2 class="section-title">🌕 Guía de Lunas para el Cultivo</h2>
+                <p>Las fases lunares influyen en el flujo de savia y la germinación, según la tradición del calendario biodinámico:</p>
+                <ul>
+                    <li><strong>Luna Nueva:</strong> Período de **reposo**. Ideal para limpieza, podas drásticas y no tocar la raíz.</li>
+                    <li><strong>Cuarto Creciente:</strong> **Ascenso de Savia**. Excelente para germinar, plantar y trasplantar, ya que el agua sube hacia las partes aéreas.</li>
+                    <li><strong>Luna Llena:</strong> Máximo flujo de savia. Ideal para **esquejes** (alto contenido hormonal en tallos) y cosechar (si se busca aroma y resina).</li>
+                    <li><strong>Cuarto Menguante:</strong> **Descenso de Savia**. Ideal para abonar, regar abundantemente y controlar plagas/hongos, ya que la energía se concentra en la raíz.</li>
+                </ul>
+            </div>
+
+            <div id="nutricion" class="content-section">
+                <h2 class="section-title">🧪 Nutrición (Etapas de Crecimiento)</h2>
+                <p>Un sustrato rico es esencial. El ciclo de Cannabis en Uruguay (exterior) es largo y requiere atención nutricional constante:</p>
+                <dl>
+                    <dt>Crecimiento (Nov. a Ene.):</dt>
+                    <dd>Alto contenido de **Nitrógeno (N)**. Fomentar follaje denso y tallos fuertes.</dd>
+                    
+                    <dt>Pre-Floración (Feb.):</dt>
+                    <dd>Reducir Nitrógeno y aumentar **Fósforo (P)** y **Potasio (K)**. Preparación para la floración.</dd>
+                    
+                    <dt>Floración (Marzo/Abril):</dt>
+                    <dd>Alto contenido de **P y K**. Evitar el exceso de N. Es la etapa crítica de producción de cogollos. Cuidado con la humedad.</dd>
+                </dl>
+            </div>
+            
+        </div>
+
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
